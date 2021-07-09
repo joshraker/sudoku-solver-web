@@ -1,0 +1,8 @@
+{
+  "extends": ["tslint:latest", "tslint-react", "tslint-etc", "tslint-config-prettier"],
+  "rules": {
+    "ordered-imports": true,
+    "no-unused-declaration": true,
+    "no-implicit-dependencies": [true, ["src", "app"]]
+  }
+}
