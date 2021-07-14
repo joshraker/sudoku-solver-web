@@ -1,4 +1,4 @@
-import './App.css';
+import 'components/App.scss';
 
 import React, { InputHTMLAttributes, useEffect, useState } from 'react';
 import { Sudoku, SudokuSolver } from 'sudoku-solver';
@@ -104,13 +104,16 @@ export default function App(): React.ReactElement {
         value={value?.toString()}
         onFocus={(e) => e.target.select()}
         onChange={(e) => {
-          // Allow users to paste multiple values and assign
+          // Allow users to assign values to multiple cells by pasting multiple values
           const updatedValues = values.slice();
           const newValues = e.target.value
-            .trim()
-            .split(/\D/m)
+            .trim() // Strip leading and trailing whitespace
+            .replace(/[A-Za-z]/g, '') // Strip alpha characters
+            .split(/\D/m) // Split on any character that isn't a digit to allow blank values separated by e.g. `,`
+            // Split non-blank values into arrays of individual characters in case there are multiple digits in a single
+            // entry for some reason e.g. '123' will be split into ['1', '2', '3']
             .map((entry) => (entry === '' ? entry : entry.split('')))
-            .flat();
+            .flat(); // Flatten the array of arrays
           let updated = false;
 
           for (const entry of newValues.entries()) {
@@ -125,6 +128,7 @@ export default function App(): React.ReactElement {
             const currentValue = values[valueIndex];
             let newValue = entry[1];
 
+            // Treat zeros as blank cells
             if (newValue === '0') {
               newValue = '';
             }

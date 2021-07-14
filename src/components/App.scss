@@ -1,0 +1,83 @@
+$margin: 3vh;
+$border-size: 1px;
+$thick-border-size: 5px;
+$cell-font-size: calc(min(100vw - (#{$margin * 2} + #{$thick-border-size * 4} + #{$border-size * 6}), 80vh - #{$margin * 2}) / #{9 * 1.5});
+$cell-size: 1.5em;
+
+.app {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+.app > * {
+  margin-bottom: $margin;
+}
+.app > *:last-child {
+  margin-bottom: 0;
+}
+
+.board {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.error {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.actions > * {
+  margin-right: 1em;
+}
+
+.actions > *:last-child {
+  margin-right: 0;
+}
+
+.actions * {
+  font-size: 1.2em;
+}
+
+@media (min-width: 425px) and (min-height: 550px) {
+  .actions * {
+    font-size: 1.5em;
+  }
+}
+
+.cell {
+  padding: 0;
+  font-size: $cell-font-size;
+  width: $cell-size;
+  height: $cell-size;
+  text-align: center;
+  border-top: none;
+  border-left: none;
+  border-right: $border-size solid black;
+  border-bottom: $border-size solid black;
+}
+
+.flex-break {
+  flex-basis: 100%;
+}
+
+/* Border */
+.b-left {
+  border-left: $thick-border-size solid black;
+}
+
+.b-right {
+  border-right: $thick-border-size solid black;
+}
+
+.b-top {
+  border-top: $thick-border-size solid black;
+}
+
+.b-bottom {
+  border-bottom: $thick-border-size solid black;
+}
