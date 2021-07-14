@@ -1,4 +1,4 @@
-$margin: 3vh;
+$margin: 20px;
 $border-size: 1px;
 $thick-border-size: 5px;
 $cell-font-size: calc(min(100vw - (#{$margin * 2} + #{$thick-border-size * 4} + #{$border-size * 6}), 80vh - #{$margin * 2}) / #{9 * 1.5});
